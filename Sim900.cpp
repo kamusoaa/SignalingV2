@@ -159,7 +159,7 @@ String GSMModem::moduleStatus()
 	response = response.substring(18, 19);
 	response.trim();
 	if (response == "0")
-		return "Ready to work";
+		return "Ready_to_work";
 	if (response == "2")
 		return "Unknown";
 	return response;
@@ -420,7 +420,7 @@ String GSMModem::readHttpRequest()
 	String jsonResponse;
 	while (Serial1.available()) Serial1.read();
 	Serial1.println("AT+HTTPREAD=0,170");
-	delay(2000);
+	delay(3000);
 		
 	while (Serial1.available())
 	{
@@ -439,6 +439,8 @@ String GSMModem::readHttpRequest()
 			break;
 		}
 	}
+
+
 	while (Serial1.available()) Serial1.read();
 	Serial.println(jsonResponse.length());
 	Serial.println(jsonResponse);

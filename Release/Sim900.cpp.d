@@ -94,5 +94,4 @@ C:\Users\kozjava\AppData\Local\Temp\VMBuilds\SignalingV2\mega_atmega2560\Release
  C:\Users\kozjava\Documents\Arduino\libraries\ArduinoJson-master\src/ArduinoJson/Polyfills/isInteger.hpp \
  C:\Users\kozjava\Documents\Arduino\libraries\ArduinoJson-master\src/ArduinoJson/Polyfills/parseFloat.hpp \
  C:\Users\kozjava\Documents\Arduino\libraries\ArduinoJson-master\src/ArduinoJson/Polyfills/parseInteger.hpp \
- C:\Users\kozjava\Documents\Arduino\libraries\ArduinoJson-master\src/ArduinoJson/Serialization/JsonSerializerImpl.hpp \
- C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/arduino.h
+ C:\Users\kozjava\Documents\Arduino\libraries\ArduinoJson-master\src/ArduinoJson/Serialization/JsonSerializerImpl.hpp

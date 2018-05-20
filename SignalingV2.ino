@@ -71,7 +71,7 @@ void setup()
 
 
   soundSensor.configure();
-  soundThread.enabled = true;
+  soundThread.enabled = false;
   soundThread.onRun(doInSoundSensorThread);
   soundThread.setInterval(0);
 

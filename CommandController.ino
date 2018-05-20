@@ -78,7 +78,11 @@ void parseCommand()
       case str2int("MTRAF"):
         getTraffic();
         break;
+	  case  str2int("0"):
+		  setDefault();
+		  break;
       default:
+
         break;
     }
 
@@ -88,10 +92,15 @@ void parseCommand()
 }
 
 
+void setDefault()
+{
+	commandResponse = "0";
+}
 
 void turnOnTheSiren()
 {
   piezo.loudlyBeeping();
+  commandResponse = "Siren_On";
 }
 void turnOffTheSiren()
 {
@@ -99,38 +108,56 @@ void turnOffTheSiren()
   {
     state.reserGlobalState();
     noTone(4);
-    return;
   }
   else
   {
     noTone(4);
   }
+
+  commandResponse = "Siren_OFF";
 }
 
 
 void alwaysTurnOfTheSiren()
 {
   state.setShouldAlarm(false);
+  commandResponse = "Siren_Always_OFF";
 
 }
 
 void stopMotion1()
 {
   motionThread1.enabled = !motionThread1.enabled;
+  if (motionThread1.enabled)
+	  commandResponse = "ON";
+  else
+	  commandResponse = "OFF";
 }
 
 void stopMotion2()
 {
   motionThread2.enabled = !motionThread2.enabled;
+  if (motionThread1.enabled)
+	  commandResponse = "ON";
+  else
+	  commandResponse = "OFF";
 }
 
 void stopSound()
 {
   soundThread.enabled = !soundThread.enabled;
+  if (motionThread1.enabled)
+	  commandResponse = "ON";
+  else
+	  commandResponse = "OFF";
 }
 void stopProximity()
 {
   proximityThread.enabled = !proximityThread.enabled;
+  if (motionThread1.enabled)
+	  commandResponse = "ON";
+  else
+	  commandResponse = "OFF";
 }
 void stopHall()
 {
@@ -143,6 +170,8 @@ void stopAllSensors()
   soundThread.enabled = false;
   proximityThread.enabled = false;
   hallThread.enabled = false;
+
+  commandResponse = "Stop_ALL";
 
 }
 void getMoudleID()
@@ -160,10 +189,16 @@ void getModuleIMEI()
 void getMobileCelluar()
 {
   commandResponse = modem.celluarOperator();
+  for (int i = 0; i < commandResponse.length(); i++)
+  {
+	  if (commandResponse[i] == ' ')
+		  commandResponse[i] = '_';
+  }
 }
 void getMobileStatus()
 {
-  commandResponse = modem.moduleStatus();
+  commandResponse += modem.moduleStatus();
+
 }
 void getMobileNumber()
 {
@@ -183,9 +218,22 @@ void getADCvalue()
 }
 void getBalance()
 {
-  commandResponse = modem.getBalance();
+	commandResponse = modem.getBalance();
+	for (int i = 0; i < commandResponse.length(); i++)
+	{
+		if (commandResponse[i] == ' ')
+			commandResponse[i] = '_';
+
+	}
+	
 }
 void getTraffic()
 {
   commandResponse = modem.getTraffic();
+  for (int i = 0; i < commandResponse.length(); i++)
+  {
+	  if (commandResponse[i] == ' ')
+		  commandResponse[i] = '_';
+
+  }
 }

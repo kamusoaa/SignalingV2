@@ -45,8 +45,8 @@ void sendData()
 	data += proximity.getValue();
 	data += "&sound=";
 	data += soundSensor.getValue();
-  data += "&cmd=";
-  data += commandResponse;
+	data += "&cmd=";
+	data += commandResponse;
 
 	modem.sendHttpRequest("http://gsmserver.herokuapp.com/q/modem?",data);
 	_JSON = modem.readHttpRequest();
